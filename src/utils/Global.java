@@ -228,6 +228,17 @@ public class Global {
         return null;
     }
 
+public static Perawat searchPerawat(String identifier){
+    identifier = identifier.trim();
+    for(Perawat p : daftarPerawat){
+        if(p.getNama().equals(identifier) || p.getId().equals(identifier)){
+            return p;
+        }
+    }
+
+    return null;
+}
+
     public static Pasien searchPasien(String identifier){
         identifier = identifier.trim();
 
@@ -278,6 +289,18 @@ public class Global {
         }
         dokterListPasien.put(d.getId(), new ArrayList<>());
         dokterListPasien.get(d.getId()).add(p);
+
+        System.out.println("Pasien Berhasil di tambahkan");
+    }
+
+    public static void assignPerawat(Perawat d, Pasien p){
+        if(perawatListPasien.containsKey(d.getId())){
+            perawatListPasien.get(d.getId()).add(p);
+            System.out.println("Pasien Berhasil ditambahkan!");
+            return;
+        }
+        perawatListPasien.put(d.getId(), new ArrayList<>());
+        perawatListPasien.get(d.getId()).add(p);
 
         System.out.println("Pasien Berhasil di tambahkan");
     }

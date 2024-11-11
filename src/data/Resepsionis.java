@@ -107,6 +107,28 @@ public class Resepsionis extends Orang {
 
     //TODO: kayak diatas, tapi buat perawat.
     public void displayAssignPerawat(){
+        System.out.println("Masukkan Id / Nama Perawat");
+        String identifier = Global.scanner.nextLine();
+        Perawat perawat = Global.searchPerawat(identifier);
 
+        if(perawat == null){
+            System.out.println("Data Perawat tidak ditemukan, Mohon ulangi operasi lagi");
+            return;
+        }
+
+        System.out.println("Masukkan Id / Nama Pasien");
+        identifier = Global.scanner.nextLine();
+        Pasien pasien = Global.searchPasien(identifier);
+
+
+        if(pasien == null){
+            System.out.println("Data Pasien tidak ditemukan, Mohon ulangi operasi lagi");
+            return;
+        }
+
+        perawat.getDetail();
+        pasien.getDetail();
+
+        Global.assignPerawat(perawat, pasien);
     }
 }
